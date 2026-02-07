@@ -1,0 +1,258 @@
+2026-02-07 12:30:31,994 | INFO | ================================================================================
+2026-02-07 12:30:31,995 | INFO | PARALLEL RANDOM FOREST FOR FOREST COVER TYPE PREDICTION
+2026-02-07 12:30:31,995 | INFO | ================================================================================
+2026-02-07 12:30:31,995 | INFO | 
+
+2026-02-07 12:30:31,995 | INFO | System Information:
+2026-02-07 12:30:31,995 | INFO | Available CPU Cores: 10
+2026-02-07 12:30:31,995 | INFO | NumPy Version: 1.26.4
+2026-02-07 12:30:31,995 | INFO | Pandas Version: 2.3.3
+2026-02-07 12:30:31,995 | INFO | ================================================================================
+2026-02-07 12:30:31,995 | INFO | 
+
+2026-02-07 12:30:31,995 | INFO | [EXPERIMENT CONFIGURATION]
+2026-02-07 12:30:31,995 | INFO |   Sequential Trees: 100
+2026-02-07 12:30:31,995 | INFO |   Tree-Parallel Trees: 100
+2026-02-07 12:30:31,995 | INFO |   Data-Parallel: 4 partitions × 25 trees
+2026-02-07 12:30:31,995 | INFO |   Max Tree Depth: 20
+2026-02-07 12:30:31,995 | INFO | Loading Covertype dataset...
+2026-02-07 12:30:32,128 | INFO | 
+
+2026-02-07 12:30:32,128 | INFO | Dataset Loaded:
+2026-02-07 12:30:32,128 | INFO |   Total Samples: 581,012
+2026-02-07 12:30:32,128 | INFO |   Features: 54
+2026-02-07 12:30:32,132 | INFO |   Classes: 7
+2026-02-07 12:30:32,132 | INFO | 
+
+2026-02-07 12:30:32,132 | INFO | Class Distribution:
+2026-02-07 12:30:32,136 | INFO |   Spruce/Fir          : 211,840 (36.46%)
+2026-02-07 12:30:32,136 | INFO |   Lodgepole Pine      : 283,301 (48.76%)
+2026-02-07 12:30:32,136 | INFO |   Ponderosa Pine      : 35,754 ( 6.15%)
+2026-02-07 12:30:32,136 | INFO |   Cottonwood/Willow   :  2,747 ( 0.47%)
+2026-02-07 12:30:32,136 | INFO |   Aspen               :  9,493 ( 1.63%)
+2026-02-07 12:30:32,136 | INFO |   Douglas-fir         : 17,367 ( 2.99%)
+2026-02-07 12:30:32,136 | INFO |   Krummholz           : 20,510 ( 3.53%)
+2026-02-07 12:30:32,465 | INFO | 
+
+2026-02-07 12:30:32,465 | INFO | Data Split:
+2026-02-07 12:30:32,465 | INFO |   Training: 348,606 samples
+2026-02-07 12:30:32,465 | INFO |   Validation: 116,203 samples
+2026-02-07 12:30:32,465 | INFO |   Test: 116,203 samples
+2026-02-07 12:30:32,471 | INFO | 
+
+2026-02-07 12:30:32,471 | INFO | ================================================================================
+2026-02-07 12:30:32,471 | INFO | RUNNING BASELINE: SEQUENTIAL RANDOM FOREST
+2026-02-07 12:30:32,471 | INFO | ================================================================================
+2026-02-07 12:30:32,471 | INFO | Configuration:
+2026-02-07 12:30:32,471 | INFO |   Number of Trees: 100
+2026-02-07 12:30:32,471 | INFO |   Max Depth: 20
+2026-02-07 12:30:32,471 | INFO |   Max Features: sqrt
+2026-02-07 12:30:32,471 | INFO |   Training Samples: 348,606
+2026-02-07 12:30:43,048 | INFO |   Built 20/100 trees... (avg time: 0.529s/tree)
+2026-02-07 12:30:53,875 | INFO |   Built 40/100 trees... (avg time: 0.535s/tree)
+2026-02-07 12:31:04,941 | INFO |   Built 60/100 trees... (avg time: 0.541s/tree)
+2026-02-07 12:31:16,033 | INFO |   Built 80/100 trees... (avg time: 0.545s/tree)
+2026-02-07 12:31:27,043 | INFO |   Built 100/100 trees... (avg time: 0.546s/tree)
+2026-02-07 12:31:28,714 | INFO | 
+
+2026-02-07 12:31:28,714 | INFO | Training Complete:
+2026-02-07 12:31:28,714 | INFO |   Total Time: 54.57s
+2026-02-07 12:31:28,714 | INFO |   Avg Time per Tree: 0.546s
+2026-02-07 12:31:28,714 | INFO |   Validation Accuracy: 0.8601
+2026-02-07 12:31:28,716 | INFO | 
+
+2026-02-07 12:31:28,716 | INFO | ================================================================================
+2026-02-07 12:31:28,716 | INFO | RUNNING VARIATION 1: TREE-LEVEL PARALLEL
+2026-02-07 12:31:28,716 | INFO | ================================================================================
+2026-02-07 12:31:28,717 | INFO | Configuration:
+2026-02-07 12:31:28,717 | INFO |   Number of Trees: 100
+2026-02-07 12:31:28,717 | INFO |   Max Depth: 20
+2026-02-07 12:31:28,717 | INFO |   Max Features: sqrt
+2026-02-07 12:31:28,717 | INFO |   Parallel Workers: 4
+2026-02-07 12:31:28,717 | INFO |   Trees per Worker: 25
+2026-02-07 12:31:28,717 | INFO | 
+
+2026-02-07 12:31:28,717 | INFO | Building 100 trees in parallel...
+2026-02-07 12:31:48,416 | INFO |   Successfully built all trees in parallel
+2026-02-07 12:31:50,184 | INFO | 
+
+2026-02-07 12:31:50,184 | INFO | Training Complete:
+2026-02-07 12:31:50,184 | INFO |   Total Time: 19.70s
+2026-02-07 12:31:50,184 | INFO |   Avg Time per Tree: 0.197s
+2026-02-07 12:31:50,184 | INFO |   Validation Accuracy: 0.8687
+2026-02-07 12:31:50,184 | INFO | 
+
+2026-02-07 12:31:50,184 | INFO | ================================================================================
+2026-02-07 12:31:50,184 | INFO | RUNNING VARIATION 2: DATA-PARALLEL
+2026-02-07 12:31:50,184 | INFO | ================================================================================
+2026-02-07 12:31:50,185 | INFO | Configuration:
+2026-02-07 12:31:50,185 | INFO |   Number of Partitions: 4
+2026-02-07 12:31:50,185 | INFO |   Trees per Partition: 25
+2026-02-07 12:31:50,185 | INFO |   Total Trees: 100
+2026-02-07 12:31:50,185 | INFO |   Max Depth: 20
+2026-02-07 12:31:50,185 | INFO |   Samples per Partition: ~87,151
+2026-02-07 12:31:50,233 | INFO |   Partition 0: 87,152 samples, 7 classes
+2026-02-07 12:31:50,247 | INFO |   Partition 1: 87,152 samples, 7 classes
+2026-02-07 12:31:50,260 | INFO |   Partition 2: 87,151 samples, 7 classes
+2026-02-07 12:31:50,274 | INFO |   Partition 3: 87,151 samples, 7 classes
+2026-02-07 12:31:50,274 | INFO | 
+
+2026-02-07 12:31:50,274 | INFO | Building 4 forests in parallel...
+2026-02-07 12:31:55,460 | INFO |  Successfully built all partition forests
+2026-02-07 12:31:55,461 | INFO |   Partition 0: 25 trees built
+2026-02-07 12:31:55,461 | INFO |   Partition 1: 25 trees built
+2026-02-07 12:31:55,461 | INFO |   Partition 2: 25 trees built
+2026-02-07 12:31:55,461 | INFO |   Partition 3: 25 trees built
+2026-02-07 12:31:57,059 | INFO | 
+
+2026-02-07 12:31:57,059 | INFO | Training Complete:
+2026-02-07 12:31:57,059 | INFO |   Total Time: 5.28s
+2026-02-07 12:31:57,059 | INFO |   Total Trees: 100
+2026-02-07 12:31:57,059 | INFO |   Validation Accuracy: 0.8347
+2026-02-07 12:31:57,062 | INFO | 
+
+2026-02-07 12:31:57,062 | INFO | ================================================================================
+2026-02-07 12:31:57,062 | INFO | RUNNING VARIATION 3: HYBRID (DATA + TREE PARALLEL)
+2026-02-07 12:31:57,062 | INFO | ================================================================================
+2026-02-07 12:31:57,062 | INFO | Configuration:
+2026-02-07 12:31:57,062 | INFO |   Number of Partitions: 2
+2026-02-07 12:31:57,062 | INFO |   Trees per Partition: 50
+2026-02-07 12:31:57,062 | INFO |   Workers per Partition: 2
+2026-02-07 12:31:57,063 | INFO |   Total Trees: 100
+2026-02-07 12:31:57,063 | INFO |   Partitions processed: Sequentially (to avoid oversubscription)
+2026-02-07 12:31:57,109 | INFO | 
+
+2026-02-07 12:31:57,109 | INFO | Processing Partition 1/2...
+2026-02-07 12:31:57,109 | INFO |   Samples: 174,303
+2026-02-07 12:31:57,109 | INFO |   Building 50 trees with 2 workers...
+2026-02-07 12:32:06,320 | INFO |   Partition 0: 50 trees built
+2026-02-07 12:32:06,331 | INFO | 
+
+2026-02-07 12:32:06,332 | INFO | Processing Partition 2/2...
+2026-02-07 12:32:06,332 | INFO |   Samples: 174,303
+2026-02-07 12:32:06,332 | INFO |   Building 50 trees with 2 workers...
+2026-02-07 12:32:15,746 | INFO |   Partition 1: 50 trees built
+2026-02-07 12:32:17,485 | INFO | 
+
+2026-02-07 12:32:17,485 | INFO | Training Complete:
+2026-02-07 12:32:17,485 | INFO |   Total Time: 18.68s
+2026-02-07 12:32:17,485 | INFO |   Total Trees: 100
+2026-02-07 12:32:17,485 | INFO |   Validation Accuracy: 0.8611
+2026-02-07 12:32:17,486 | INFO | 
+
+2026-02-07 12:32:17,486 | INFO | ================================================================================
+2026-02-07 12:32:17,486 | INFO | PERFORMANCE COMPARISON
+2026-02-07 12:32:17,486 | INFO | ================================================================================
+2026-02-07 12:32:17,487 | INFO | 
+
+2026-02-07 12:32:17,490 | INFO | 
+    Variation  Total Time (s)  Speedup  Trees Built  Validation Acc  Avg Tree Time (s)
+   Sequential         54.5719   1.0000          100          0.8601             0.5457
+Tree-Parallel         19.7002   2.7701          100          0.8687             0.1970
+Data-Parallel          5.2761  10.3432          100          0.8347             0.0528
+       Hybrid         18.6842   2.9208          100          0.8611             0.1868
+2026-02-07 12:32:17,490 | INFO | 
+
+2026-02-07 12:32:17,490 | INFO | [GENERATING VISUALIZATIONS]
+2026-02-07 12:32:17,958 | INFO |   Performance comparison saved
+2026-02-07 12:32:17,959 | INFO | 
+
+2026-02-07 12:32:17,959 | INFO | ================================================================================
+2026-02-07 12:32:17,959 | INFO | FINAL MODEL EVALUATION ON TEST SET
+2026-02-07 12:32:17,959 | INFO | ================================================================================
+2026-02-07 12:32:19,766 | INFO | Test Set Performance:
+2026-02-07 12:32:19,766 | INFO |   Accuracy: 0.8704
+2026-02-07 12:32:19,766 | INFO | 
+
+2026-02-07 12:32:19,766 | INFO | Classification Report:
+2026-02-07 12:32:19,797 | INFO | 
+                   precision  recall  f1-score  support
+Spruce/Fir             0.882   0.829     0.855  42368.0
+Lodgepole Pine         0.851   0.923     0.885  56661.0
+Ponderosa Pine         0.905   0.910     0.907   7151.0
+Cottonwood/Willow      0.906   0.805     0.852    549.0
+Aspen                  0.966   0.358     0.522   1899.0
+Douglas-fir            0.889   0.750     0.814   3473.0
+Krummholz              0.976   0.844     0.905   4102.0
+macro avg              0.911   0.774     0.820         
+weighted avg           0.873   0.870     0.868         
+2026-02-07 12:32:19,800 | INFO | 
+
+2026-02-07 12:32:19,800 | INFO | Confusion Matrix Shape: (7, 7)
+2026-02-07 12:32:19,800 | INFO | --------------------------------------------------------------------------------
+2026-02-07 12:32:19,977 | INFO | 
+
+2026-02-07 12:32:19,977 | INFO |   Confusion matrix saved
+2026-02-07 12:32:19,977 | INFO | 
+
+2026-02-07 12:32:19,977 | INFO | ================================================================================
+2026-02-07 12:32:19,977 | INFO | CONCLUSIONS AND RECOMMENDATIONS
+2026-02-07 12:32:19,977 | INFO | ================================================================================
+2026-02-07 12:32:19,977 | INFO | 
+
+2026-02-07 12:32:19,977 | INFO | [KEY FINDINGS]
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | 1. SPEEDUP ANALYSIS:
+2026-02-07 12:32:19,978 | INFO |    Sequential Baseline: 54.57s
+2026-02-07 12:32:19,978 | INFO |    Tree-Parallel: 2.77x speedup (19.70s)
+2026-02-07 12:32:19,978 | INFO |    Data-Parallel: 10.34x speedup (5.28s)
+2026-02-07 12:32:19,978 | INFO |    Hybrid: 2.92x speedup (18.68s)
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | 2. ACCURACY ANALYSIS:
+2026-02-07 12:32:19,978 | INFO |    Sequential: 0.8601
+2026-02-07 12:32:19,978 | INFO |    Tree-Parallel: 0.8687
+2026-02-07 12:32:19,978 | INFO |    Data-Parallel: 0.8347
+2026-02-07 12:32:19,978 | INFO |    Hybrid: 0.8611
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | 3. EFFICIENCY:
+2026-02-07 12:32:19,978 | INFO |    Tree-Parallel: Most efficient (near-linear speedup)
+2026-02-07 12:32:19,978 | INFO |    Data-Parallel: More trees (100 vs 100)
+2026-02-07 12:32:19,978 | INFO |    Hybrid: Balanced approach, moderate speedup
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | [RECOMMENDATIONS]
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | WHEN TO USE EACH VARIATION:
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO |   1. SEQUENTIAL:
+2026-02-07 12:32:19,978 | INFO |      Use when: Single core, small datasets, debugging
+2026-02-07 12:32:19,978 | INFO |      Pros: Simple, predictable
+2026-02-07 12:32:19,978 | INFO |      Cons: Slowest
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO |   2. TREE-LEVEL PARALLEL:
+2026-02-07 12:32:19,978 | INFO |      Use when: Multi-core CPU, standard use case
+2026-02-07 12:32:19,978 | INFO |      Pros: Best speedup, same accuracy, standard approach
+2026-02-07 12:32:19,978 | INFO |      Cons: None (this is the default choice)
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO |   3. DATA-PARALLEL:
+2026-02-07 12:32:19,978 | INFO |      Use when: Very large datasets, distributed systems
+2026-02-07 12:32:19,978 | INFO |      Pros: Scales to huge data, increases diversity
+2026-02-07 12:32:19,978 | INFO |      Cons: More total trees, higher memory
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO |   4. HYBRID:
+2026-02-07 12:32:19,978 | INFO |      Use when: Large data + many cores available
+2026-02-07 12:32:19,978 | INFO |      Pros: Combines both strategies
+2026-02-07 12:32:19,978 | INFO |      Cons: More complex, potential oversubscription
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO |  BEST OVERALL: Tree-Level Parallel
+2026-02-07 12:32:19,978 | INFO |    Reason: Maximum speedup, same accuracy, minimal complexity
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | ================================================================================
+2026-02-07 12:32:19,978 | INFO | EXPERIMENT COMPLETED SUCCESSFULLY
+2026-02-07 12:32:19,978 | INFO | ================================================================================
+2026-02-07 12:32:19,978 | INFO | 
+
+2026-02-07 12:32:19,978 | INFO | All results saved to ./outputs/
+2026-02-07 12:32:19,978 | INFO |   - rf_performance_comparison.png
+2026-02-07 12:32:19,978 | INFO |   - confusion_matrix.png
+2026-02-07 12:32:19,978 | INFO | ================================================================================
